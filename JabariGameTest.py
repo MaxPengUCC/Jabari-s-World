@@ -11,7 +11,11 @@ if "y" in inp.lower():
     validInput = False
     while validInput == False:
         command = input("Type a direction to move. Valid directions are NORTH(n), SOUTH(s), EAST(e), WEST(w). If you think you're ready you can also go to the Diving Board(db):  ")
-        if "n" in command.lower():
+        goNorth = False
+        goSouth = False
+        goWest = False
+        goEast = False
+        if "n" in command.lower() and goNorth == False:
             print()
             print ("You have moved north") 
             print()
@@ -42,12 +46,13 @@ if "y" in inp.lower():
                             over=art.text2art("GAME OVER")
                             print (over)
                             validInput = True
+                            goNorth = True
                     count += 1
             else:
                 print("You have gone back to your original position")
                 print()
                 validInput == False
-        elif "e" in command.lower():
+        elif "e" in command.lower() and goEast == False:
             print()
             print ("You have moved east")
             print()
@@ -65,6 +70,7 @@ if "y" in inp.lower():
                         print ("Your current confidence level is: ", confidence)
                         print()
                         correct = True
+                        goEast = True
                     else:
                         if count < 4: 
                             print()
@@ -80,7 +86,7 @@ if "y" in inp.lower():
                 print("You move back. Your dad's face forms a sad expression as you walk away. You have gone back to your original position")
                 print()
                 validInput == False
-        elif "w" in command.lower():
+        elif "w" in command.lower() and goWest == False:
             print ("You have moved west")
             print()
             westIntOne = input("You find an iPad, on the bench. Do you want to open it?(y/n): ")
@@ -98,6 +104,7 @@ if "y" in inp.lower():
                         print ("Your current confidence level is: ", confidence)
                         print()
                         correct = True
+                        goWest = True
                     else:
                         if count < 4: 
                             print()
@@ -113,7 +120,7 @@ if "y" in inp.lower():
                 print("You leave the iPad there. You have gone back to your original position.")
                 print()
                 validInput == False
-        elif "s" in command.lower():
+        elif "s" in command.lower() and goSouth == False:
             print ("You have moved south")    
             print()
             southIntOne = input("You find a piece of paper on the floor. It seems to be a scavenger hunt, do you want to read the instructions?(y/n): ")
@@ -143,6 +150,7 @@ if "y" in inp.lower():
                                     print ("In you inventory you have:", dollars, "dollars")
                                     print()
                                     correct = True
+                                    goSouth = True
                                 else:
                                     if count < 4: 
                                         print()
@@ -182,7 +190,7 @@ if "y" in inp.lower():
                 print()
                 validInput == False
         else:
-            print ("I do no recongnize that command. Try again!")
+            print ("I don't recongnize that command, or have already gone to that position.")
             print ()
 else:
     print ()
